@@ -7,13 +7,11 @@ datasource db {
 }
 
 model Country {
-    id              Int     @id @default(autoincrement())
-    flag            String
-    name            String  @unique
-    capital         String  @unique
-    continent       String
-    languageSpeaked String
-    exists          Boolean @default(true)
+    id        Int     @id @default(autoincrement())
+    name      String  @unique
+    capital   String
+    continent String
+    flagUrl   String
 
     @@map("Countries")
 }
