@@ -14,8 +14,14 @@ export default class CountryModel {
 
         if (filters.name) where.name = { contains: filters.name, mode: 'insensitive' }
         if (filters.capital) where.capital = { contains: filters.capital, mode: 'insensitive' }
-        if (filters.continent) where.continent = { contains: filters.continent, mode: 'insensitive' }
+        if (filters.continent) where.continent = filters.continent.toUpperCase();
 
         return prisma.country.findMany({ where });
+    }
+
+    static async findCountryById(id) {
+        const data = await prisma.country.findUnique({ where: { id } });
+
+        return data ? new CountryModel(data) : null;
     }
 }
