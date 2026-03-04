@@ -7,11 +7,49 @@ datasource db {
 }
 
 model Country {
-    id        Int     @id @default(autoincrement())
-    name      String  @unique
+    id        Int    @id @default(autoincrement())
+    name      String @unique
     capital   String
-    continent String
+    continent Continent
+    subregion Subregion
     flagUrl   String
 
     @@map("Countries")
+}
+
+enum Continent {
+    AFRICA
+    EUROPE
+    ASIA
+    OCEANIA
+    AMERICA
+}
+
+enum Subregion {
+    NORTHERN_AFRICA
+    WESTERN_AFRICA
+    MIDDLE_AFRICA
+    EASTERN_AFRICA
+    SOUTHERN_AFRICA
+
+    NORTHERN_AMERICA
+    CENTRAL_AMERICA
+    CARIBBEAN
+    SOUTH_AMERICA
+
+    WESTERN_ASIA
+    CENTRAL_ASIA
+    SOUTHERN_ASIA
+    EASTERN_ASIA
+    SOUTH_EASTERN_ASIA
+
+    NORTHERN_EUROPE
+    WESTERN_EUROPE
+    EASTERN_EUROPE
+    SOUTHERN_EUROPE
+
+    AUSTRALIA_AND_NEW_ZEALAND
+    MELANESIA
+    MICRONESIA
+    POLYNESIA
 }
