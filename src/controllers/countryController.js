@@ -10,6 +10,14 @@ const serverErrorMessage = (res, error) => {
 
 const validId = (id) => !Number.isNaN(id) && Number.isInteger(id) && id > 0;
 
+export const postCountry = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        serverErrorMessage(res, error);
+    }
+}
+
 export const getCountries = async (req, res) => {
     try {
         const countries = await CountryModel.findAllCountries(req.query);

@@ -1,12 +1,25 @@
 import prisma from '../utils/prismaClient.js';
 
 export default class CountryModel {
-    constructor({ id = null, name, capital, continent, flagUrl } = {}) {
+    constructor({ id = null, name, capital, continent, subregion, flagUrl } = {}) {
         this.id = id;
         this.name = name;
         this.capital = capital;
         this.continent = continent;
+        this.subregion = subregion;
         this.flagUrl = flagUrl;
+    }
+
+    async create() {
+        return prisma.country.create({
+            data: {
+                name: this.name,
+                capital: this.capital,
+                continent: this.continent,
+                subregion: this.subregion,
+                flagUrl: this.flagUrl,
+            }
+        });
     }
 
     static async findAllCountries(filters = {}) {
